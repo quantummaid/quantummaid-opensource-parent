@@ -26,7 +26,7 @@
     <packaging>pom</packaging>
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <name>QuantumMaid OpenSource java standards</name>
     <description>
         This parent pom is supposed to be used as a parent for all quantummaid open source projects to reliably enable
@@ -55,6 +55,7 @@
         <maven-install-plugin-version>3.0.0-M1</maven-install-plugin-version>
         <maven-deploy-plugin-version>3.0.0-M1</maven-deploy-plugin-version>
         <maven-site-plugin-version>3.8.2</maven-site-plugin-version>
+        <maven-resources-plugin-version>3.1.0</maven-resources-plugin-version>
         <versions-maven-plugin-version>2.7</versions-maven-plugin-version>
         <documaid-version>0.9.3</documaid-version>
         <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
@@ -208,6 +209,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${maven-site-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin-version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
