@@ -64,7 +64,7 @@
         <spotbugs-maven-plugin-version>3.1.12.2</spotbugs-maven-plugin-version>
         <maven-checkstyle-plugin-version>3.1.0</maven-checkstyle-plugin-version>
 
-        <dependency-update-file-checksum>011fae2eedc84420d0a4f30f16486022</dependency-update-file-checksum>
+        <dependency-update-file-checksum>a949b51c3f94b8f3e02a109cd954d9a5</dependency-update-file-checksum>
         <plugin-update-file-checksum>915baffd77985e9da0d3cfee67e149eb</plugin-update-file-checksum>
     </properties>
 
