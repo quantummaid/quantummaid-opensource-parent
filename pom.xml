@@ -329,7 +329,7 @@
                             <extensions>true</extensions>
                             <configuration>
                                 <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                                <serverId>quantummaid.opensource.sonatype.staging</serverId>
+                                <serverId>nexus</serverId>
                                 <autoReleaseAfterClose>true</autoReleaseAfterClose>
                                 <autoDropAfterRelease>true</autoDropAfterRelease>
                             </configuration>
