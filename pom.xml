@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.3</version>
+    <version>0.9.4</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -198,6 +198,7 @@
                                 <allowSnapshots>false</allowSnapshots>
                                 <outputFile>target/dependency-updates.txt</outputFile>
                                 <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                                <rulesUri>file:///${project.basedir}/src/test/dependencies/ignoredVersionUpdates.xml</rulesUri>
                             </configuration>
                         </execution>
                         <execution>
@@ -210,6 +211,7 @@
                                 <allowSnapshots>false</allowSnapshots>
                                 <outputFile>target/plugin-updates.txt</outputFile>
                                 <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                                <rulesUri>file:///${project.basedir}/src/test/dependencies/ignoredVersionUpdates.xml</rulesUri>
                             </configuration>
                         </execution>
                     </executions>
@@ -371,6 +373,22 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>5.2.4</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <phase>verify</phase>
+                            <configuration>
+                                <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -430,7 +448,10 @@
                         <groupId>de.quantummaid</groupId>
                         <artifactId>documaid</artifactId>
                     </plugin>
-
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
