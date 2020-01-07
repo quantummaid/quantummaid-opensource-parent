@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.6</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -270,7 +270,7 @@
                     <executions>
                         <execution>
                             <id>sign-artifacts</id>
-                            <phase>verify</phase>
+                            <phase>install</phase>
                             <goals>
                                 <goal>sign</goal>
                             </goals>
@@ -385,6 +385,9 @@
                             <phase>verify</phase>
                             <configuration>
                                 <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
+                                <suppressionFiles>
+                                    <suppressionFile>ignoredVulnerableVersion.xml</suppressionFile>
+                                </suppressionFiles>
                             </configuration>
                         </execution>
                     </executions>
