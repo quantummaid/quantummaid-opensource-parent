@@ -386,7 +386,7 @@
                             <configuration>
                                 <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                                 <suppressionFiles>
-                                    <suppressionFile>ignoredVulnerableVersion.xml</suppressionFile>
+                                    <suppressionFile>src/test/dependencies/ignoredVulnerableVersion.xml</suppressionFile>
                                 </suppressionFiles>
                             </configuration>
                         </execution>
