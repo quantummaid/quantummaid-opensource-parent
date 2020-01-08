@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.6</version>
+    <version>0.9.7</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -155,6 +155,9 @@
                                 <goal>jar</goal>
                             </goals>
                             <phase>package</phase>
+                            <configuration>
+                                <quiet>true</quiet>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
