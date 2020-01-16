@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.7</version>
+    <version>0.9.8</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -333,7 +333,7 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.0.0-beta4</version>
+                            <version>4.0.0-beta5</version>
                         </dependency>
                     </dependencies>
                 </plugin>
