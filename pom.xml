@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.10</version>
+    <version>0.9.11</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -93,6 +93,7 @@
         <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
         <spotbugs-maven-plugin-version>3.1.12.2</spotbugs-maven-plugin-version>
         <maven-checkstyle-plugin-version>3.1.0</maven-checkstyle-plugin-version>
+        <maven-checkstyle-puppycrawl-plugin-version>8.29</maven-checkstyle-puppycrawl-plugin-version>
         <owasp-dependency-check-maven-version>5.3.0</owasp-dependency-check-maven-version>
 
         <dependency-update-file-checksum>a949b51c3f94b8f3e02a109cd954d9a5</dependency-update-file-checksum>
@@ -346,7 +347,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.28</version>
+                            <version>${maven-checkstyle-puppycrawl-plugin-version}</version>
                         </dependency>
                     </dependencies>
                     <executions>
