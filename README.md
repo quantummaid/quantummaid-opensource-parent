@@ -36,7 +36,7 @@ Replace the top section of your pom with the following:
     <parent>
         <groupId>de.quantummaid</groupId>
         <artifactId>quantummaid-opensource-parent</artifactId>
-        <version>1.0.0</version>
+        <version>0.9.15</version>
     </parent>
 ```
 
