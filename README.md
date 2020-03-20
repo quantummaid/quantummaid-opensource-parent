@@ -1,5 +1,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.quantummaid/quantummaid-opensource-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.quantummaid/quantummaid-opensource-parent)
 
+<img src="quantummaid_logo.png" align="left"/>
+
 # quantummaid-java-standards
 
 Contains the java quality standards for quantummaid projects
