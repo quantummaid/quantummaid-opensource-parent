@@ -24,12 +24,12 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.22</version>
+    <version>0.9.23</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
     <description>
-        This parent pom is supposed to be used as a parent for all quantummaid open source projects to reliably enable
+        This parent pom is supposed to be used as a parent for all QuantumMaid open source projects to reliably enable
         the enforcement of java standards like library blacklisting, code style rules, and more.
     </description>
     <url>https://github.com/quantummaid/quantummaid-opensource-parent</url>
@@ -94,7 +94,7 @@
         <spotbugs-maven-plugin-version>4.0.0</spotbugs-maven-plugin-version>
         <spotbugs-maven-plugin-spotbugs-dependency-version>4.0.1</spotbugs-maven-plugin-spotbugs-dependency-version>
         <maven-checkstyle-plugin-version>3.1.1</maven-checkstyle-plugin-version>
-        <maven-checkstyle-puppycrawl-plugin-version>8.30</maven-checkstyle-puppycrawl-plugin-version>
+        <maven-checkstyle-puppycrawl-plugin-version>8.31</maven-checkstyle-puppycrawl-plugin-version>
         <owasp-dependency-check-maven-version>5.3.2</owasp-dependency-check-maven-version>
 
         <dependency-update-file-checksum>a949b51c3f94b8f3e02a109cd954d9a5</dependency-update-file-checksum>
