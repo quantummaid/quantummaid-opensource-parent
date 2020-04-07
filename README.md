@@ -1,17 +1,23 @@
+[![Last Commit](https://img.shields.io/github/last-commit/quantummaid/quantummaid-opensource-parent)](https://github.com/quantummaid/quantummaid-opensource-parent)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.quantummaid/quantummaid-opensource-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.quantummaid/quantummaid-opensource-parent)
+[![Code Size](https://img.shields.io/github/languages/code-size/quantummaid/quantummaid-opensource-parent)](https://github.com/quantummaid/quantummaid-opensource-parent)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Slack](https://img.shields.io/badge/chat%20on-Slack-brightgreen)](https://join.slack.com/t/quantummaid/shared_invite/zt-cx5qd605-vG10I~WazfgH9WOnXMzl3Q)
+[![Gitter](https://img.shields.io/badge/chat%20on-Gitter-brightgreen)](https://gitter.im/quantum-maid-framework/community)
+[![Twitter](https://img.shields.io/twitter/follow/quantummaid)](https://twitter.com/quantummaid)
+
 
 <img src="quantummaid_logo.png" align="left"/>
 
 # quantummaid-java-standards
 
-Contains the java quality standards for quantummaid projects
+Contains the Java quality standards for QuantumMaid projects.
 
 ## Usage
-Replace the top section of your pom with the following:
+Replace the top section of your `pom.xml` with the following:
 ```xml
 <!--
-  ~ Copyright (c) 2018 Richard Hauswald - https://quantummaid.de/.
+  ~ Copyright (c) 2020 Richard Hauswald - https://quantummaid.de/.
   ~
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements.  See the NOTICE file
@@ -39,19 +45,19 @@ Replace the top section of your pom with the following:
     <parent>
         <groupId>de.quantummaid</groupId>
         <artifactId>quantummaid-opensource-parent</artifactId>
-        <version>0.9.15</version>
+        <version>0.9.23</version>
     </parent>
 ```
 
 Also make sure that the `README.md` of the project clearly recommends the usage of the `pgpverify-maven-plugin` by
-providing the link https://youtu.be/ES9hWkn_WBA?t=27m29s . It can be found under 
-https://www.simplify4u.org/pgpverify-maven-plugin/ usage instructions. 
+providing the link <https://youtu.be/ES9hWkn_WBA?t=27m29s>. It can be found under 
+<https://www.simplify4u.org/pgpverify-maven-plugin/> (usage instructions). 
  
 ## Checkstyle
-Checkstyle is enabled after using this pom as parent in a maven project and executed before tests are run.
+Checkstyle is enabled after using this POM as parent in a Maven project. It is executed before tests are run.
 
 ### Registering Checkstyle suppressions
-Add the following to your pom:
+Add the following to your `pom.xml`:
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -68,12 +74,12 @@ Add the following to your pom:
     ...
 </project>
 ```
-And create the suppression configuration file under `/src/test/checkstyle/checkstyle-suppressions.xml` with the 
-contents of your choosing based on the following example:
+Create a suppression configuration file under `/src/test/checkstyle/checkstyle-suppressions.xml` with the 
+contents of your choice based on the following example:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2018 Richard Hauswald - https://quantummaid.de/.
+  ~ Copyright (c) 2020 Richard Hauswald - https://quantummaid.de/.
   ~
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements.  See the NOTICE file
@@ -103,18 +109,18 @@ contents of your choosing based on the following example:
 </suppressions>
 ```
 
-The checkstyle step can be skipped for a run with `-Dcheckstyle.skip`
+The checkstyle step can be skipped for a run with `-Dcheckstyle.skip`.
 
-### Intellij integration
-Install the CheckStyle-IDEA plugin. Afterwards, open Settings -> Other Settings -> Checkstyle and add a new Checkstyle
-configuration file, name it QuantumMaidOpenSource and use 
-`https://raw.githubusercontent.com/quantummaid/quantummaid-opensource-parent/master/checkstyle/checkstyle.xml` as a URL location.
+### IntelliJ IDEA integration
+Install the CheckStyle-IDEA plugin. Afterwards, open `Settings -> Other Settings -> Checkstyle` and add a new Checkstyle
+configuration file, name it `QuantumMaidOpenSource` and use 
+<https://raw.githubusercontent.com/quantummaid/quantummaid-opensource-parent/master/checkstyle/checkstyle.xml> as a URL location.
 
 ## Spotbugs
-Spotbugs is enabled after using this pom as parent in a maven project and executed before tests are run.
+Spotbugs is enabled after using this POM as parent in a Maven project. It is executed before tests are run.
 
 ### Registering Spotbugs exclusions
-Add the following to your pom:
+Add the following to your `pom.xml`:
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -131,12 +137,12 @@ Add the following to your pom:
     ...
 </project>
 ```
-And create the suppression configuration file under `/src/test/spotbugs/spotbugs-exclude.xml` with the contents of your
+Create a suppression configuration file under `/src/test/spotbugs/spotbugs-exclude.xml` with the contents of your
 choice based on the following example:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2018 Richard Hauswald - https://quantummaid.de/.
+  ~ Copyright (c) 2020 Richard Hauswald - https://quantummaid.de/.
   ~
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements.  See the NOTICE file
@@ -174,18 +180,18 @@ choice based on the following example:
 </FindBugsFilter>
 ```
 
-More information about exclusions can be found on the spotbugs website: https://spotbugs.readthedocs.io/en/stable/filter.html#examples
+More information about exclusions can be found on the [spotbugs website](https://spotbugs.readthedocs.io/en/stable/filter.html#examples).
 
-### Intellij integration
+### IntelliJ IDEA integration
 Install the Findbugs-IDEA plugin.
 
 ## Compiler
-The compiler is configured for all child projects and should not be modified in any of the child projects of this pom.
+The compiler is configured for all child projects and should not be modified in any of the child projects of this POM.
 Following this recommendation provides child projects with the following benefits:
 - Encoding and Java version of the sources and compiled classes are managed
 - A configuration bug fix, that will prevent the maven-compiler-plugin from swallowing compilation errors and hence 
   failing with 'unknown compilation error'
-- Building the child project in Intellij will be possible with warnings
+- Building the child project in Intellij IDEA will be possible with warnings
 - Building the child project using maven will be possible with warnings, if built with `-DskipTests=true` 
 - Testing the child project using maven will be possible with warnings, if built with 
   `-Dmaven.compiler.failOnWarning=false` 
@@ -193,12 +199,12 @@ Following this recommendation provides child projects with the following benefit
 - Releasing the child project will fail, if the source code is causing compiler warnings
 
 ## Skipping tests
-Just run the maven command with `-DskipTests=true`.
+Just run the Maven command with `-DskipTests=true`.
 
 ## Long running tests, that should be executed before every release, but not on every verify
-Surefire will set a SystemProperty `testMode` to either `NORMAL` or `RELEASE` depending on the active profile.
+Surefire will set a system property `testMode` to either `NORMAL` or `RELEASE` depending on the active profile.
 
-In the test, an if statement can be used:
+In the test, an `if` statement can be used:
 ```java
 final Boolean runThisTest = Optional.ofNullable(System.getProperty("testMode")).map(s -> s.equals("RELEASE")).orElse(false);
 if (runThisTest) {
@@ -208,12 +214,12 @@ if (runThisTest) {
 }
 ```
 
-## Releasing a version to maven central
-The problem with releasing to maven central using a CI/CD pipeline is complicated, since both, the nexus staging account
-and the gpg key must be kept private. If a very bad person gains access to one or both of these credentials users of
-our open source products are in grave danger (https://youtu.be/ES9hWkn_WBA?t=27m29s). A bitbucket pipeline can output 
+## Releasing a version to Maven Central
+The problem with releasing to Maven Central using a CI/CD pipeline is complicated, since both, the nexus staging account
+and the gpg key must be kept private. If an attacker gains access to one or both of these credentials users of
+our open source products are in grave danger (<https://youtu.be/ES9hWkn_WBA?t=27m29s>). A bitbucket pipeline can output 
 secure environmental variables with some neat tricks. Since we would need to store both valuable credentials as such,
-that operation can only be done manually outside the bitbucket cloud environment:
+that operation can only be done manually outside the GitHub cloud environment:
 
 * Ensure the gpg private key with the id `0xACB977BA5C6D5C6E` installed in the gpg key store.
 * Ensure the maven settings.xml file contains the following section:
@@ -232,8 +238,8 @@ that operation can only be done manually outside the bitbucket cloud environment
 	...
 </settings>
 ```
-* ensure the project version has been set to the appropriate value
-* run the following command to test the project:
+* Ensure the project version has been set to the appropriate value
+* Run the following command to test the project:
 ```bash
 mvn clean verify
 ```
@@ -243,11 +249,11 @@ mvn -DdeployToMavenCentral -DskipTests=true clean deploy
 ```
 
 ## Excluding modules from being released to maven central
-Sometimes a project needs a [test]module, that is not supposed to be released as an artifact to maven central. This is
-a tough nut, since the nexus staging plugin will only deploy to staging, if the last module of a multi modules build,
+Sometimes a project needs a (test-)module that is not supposed to be released as an artifact to Maven Central. This is
+complicated because the nexus staging plugin will only deploy to staging if the last module of a multi modules build
 is actually one that is supposed to be released. Especially test modules tend to be the last ones built and are not
 to be deployed, so disabling the staging plugin in these modules will essentially end up in the whole project not being
-released to staging. In these cases 2 profiles will do the trick. One that is called `development`, which includes 
+released to staging. In these cases two profiles will do the trick. One that is called `development`, which includes 
 ALL the modules and is activated on the missing property named `deployToMavenCentral`. 
 The other profile is called `deployToMavenCentral`, contains only the modules that are intended to be released to
 maven central and is activated on the presence of the property named `deployToMavenCentral`. Example:
