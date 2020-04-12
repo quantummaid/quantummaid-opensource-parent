@@ -45,7 +45,7 @@ Replace the top section of your `pom.xml` with the following:
     <parent>
         <groupId>de.quantummaid</groupId>
         <artifactId>quantummaid-opensource-parent</artifactId>
-        <version>0.9.23</version>
+        <version>0.9.24</version>
     </parent>
 ```
 
