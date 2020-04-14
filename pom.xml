@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.28</version>
+    <version>0.9.29</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -87,7 +87,7 @@
         <maven-site-plugin-version>3.9.0</maven-site-plugin-version>
         <maven-resources-plugin-version>3.1.0</maven-resources-plugin-version>
         <versions-maven-plugin-version>2.7</versions-maven-plugin-version>
-        <documaid-version>0.9.18</documaid-version>
+        <documaid-version>0.9.19</documaid-version>
         <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
         <nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
