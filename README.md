@@ -288,3 +288,16 @@ maven central and is activated on the presence of the property named `deployToMa
     </profile>
 </profiles>
 ```
+
+## The reason for having a prepareForMavenCentral profile
+The `prepareForMavenCentral` and `deployToMavenCentral` include the exact same configuration except a excluded modules.
+To apply all plugins, checks and verifications on all modules and not only the released ones, the `prepareForMavenCentral` 
+profile is used.
+
+## Running sonar
+The sonar plugin requires an access token to be set using the `SONAR_TOKEN` env variable.
+
+Then the sonar plugin can be run with:
+```
+mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -P sonar
+```
