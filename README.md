@@ -294,6 +294,39 @@ The `prepareForMavenCentral` and `deployToMavenCentral` include the exact same c
 To apply all plugins, checks and verifications on all modules and not only the released ones, the `prepareForMavenCentral` 
 profile is used.
 
+## Coverage reports in multi-module projects
+Multi-module projects need to contain a special module `coverage` that **directly** depends on all modules
+for which coverage needs to be reported, i.e. all modules that contain code. A transitive dependency is **not** sufficient.
+The module needs to contain this plugin section:
+```xml
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <id>report-aggregate2</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+```
+All modules need to contain a property to point sonar to `target/site/jacoco-aggregate/jacoco.xml` **in the `coverage` module**.
+This has to be a relative path that needs to be tweaked to point to the `coverage` module, depending on the module it is declared in.
+Example:
+```xml
+    <properties>
+        <sonar.coverage.jacoco.xmlReportPaths>../coverage/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+```
+
 ## Running sonar
 The sonar plugin requires an access token to be set using the `SONAR_TOKEN` env variable.
 
