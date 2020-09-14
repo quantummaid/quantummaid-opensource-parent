@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.55</version>
+    <version>0.9.56</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -88,15 +88,15 @@
         <maven-site-plugin-version>3.9.1</maven-site-plugin-version>
         <maven-resources-plugin-version>3.2.0</maven-resources-plugin-version>
         <versions-maven-plugin-version>2.8.1</versions-maven-plugin-version>
-        <documaid-version>0.9.33</documaid-version>
+        <documaid-version>0.9.34</documaid-version>
         <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
         <nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
         <spotbugs-maven-plugin-version>4.0.4</spotbugs-maven-plugin-version>
         <spotbugs-maven-plugin-spotbugs-dependency-version>4.1.2</spotbugs-maven-plugin-spotbugs-dependency-version>
         <maven-checkstyle-plugin-version>3.1.1</maven-checkstyle-plugin-version>
-        <maven-checkstyle-puppycrawl-plugin-version>8.36</maven-checkstyle-puppycrawl-plugin-version>
-        <owasp-dependency-check-maven-version>5.3.2</owasp-dependency-check-maven-version>
+        <maven-checkstyle-puppycrawl-plugin-version>8.36.1</maven-checkstyle-puppycrawl-plugin-version>
+        <owasp-dependency-check-maven-version>6.0.1</owasp-dependency-check-maven-version>
         <sonar-maven-plugin-version>3.7.0.1746</sonar-maven-plugin-version>
         <jacobo-maven-plugin-version>0.8.5</jacobo-maven-plugin-version>
 
@@ -111,7 +111,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0-RC1</version>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
