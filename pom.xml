@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.67</version>
+    <version>0.9.68</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -93,9 +93,9 @@
         <nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
         <spotbugs-maven-plugin-version>4.1.4</spotbugs-maven-plugin-version>
-        <spotbugs-maven-plugin-spotbugs-dependency-version>4.1.4</spotbugs-maven-plugin-spotbugs-dependency-version>
+        <spotbugs-maven-plugin-spotbugs-dependency-version>4.2.0</spotbugs-maven-plugin-spotbugs-dependency-version>
         <maven-checkstyle-plugin-version>3.1.1</maven-checkstyle-plugin-version>
-        <maven-checkstyle-puppycrawl-plugin-version>8.37</maven-checkstyle-puppycrawl-plugin-version>
+        <maven-checkstyle-puppycrawl-plugin-version>8.38</maven-checkstyle-puppycrawl-plugin-version>
         <owasp-dependency-check-maven-version>6.0.3</owasp-dependency-check-maven-version>
         <sonar-maven-plugin-version>3.7.0.1746</sonar-maven-plugin-version>
         <jacobo-maven-plugin-version>0.8.6</jacobo-maven-plugin-version>
