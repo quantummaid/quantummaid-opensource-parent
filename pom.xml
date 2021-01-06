@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.70</version>
+    <version>0.9.71</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -92,7 +92,7 @@
         <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
         <nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
-        <spotbugs-maven-plugin-version>4.1.4</spotbugs-maven-plugin-version>
+        <spotbugs-maven-plugin-version>4.2.0</spotbugs-maven-plugin-version>
         <spotbugs-maven-plugin-spotbugs-dependency-version>4.2.0</spotbugs-maven-plugin-spotbugs-dependency-version>
         <maven-checkstyle-plugin-version>3.1.1</maven-checkstyle-plugin-version>
         <maven-checkstyle-puppycrawl-plugin-version>8.39</maven-checkstyle-puppycrawl-plugin-version>
@@ -100,21 +100,12 @@
         <sonar-maven-plugin-version>3.7.0.1746</sonar-maven-plugin-version>
         <jacobo-maven-plugin-version>0.8.6</jacobo-maven-plugin-version>
 
-        <dependency-update-file-checksum>a949b51c3f94b8f3e02a109cd954d9a5</dependency-update-file-checksum>
+        <dependency-update-file-checksum>25406c206c1aa1b1bf5c2a46ccadcfe6</dependency-update-file-checksum>
         <plugin-update-file-checksum>915baffd77985e9da0d3cfee67e149eb</plugin-update-file-checksum>
 
         <sonar.organization>quantummaid</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <pluginManagement>
@@ -202,7 +193,7 @@
                     <executions>
                         <execution>
                             <id>WriteDependencyUpdatesIntoFile</id>
-                            <phase>generate-test-sources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>display-dependency-updates</goal>
                             </goals>
@@ -215,7 +206,7 @@
                         </execution>
                         <execution>
                             <id>WritePluginUpdatesIntoFile</id>
-                            <phase>generate-test-sources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>display-plugin-updates</goal>
                             </goals>
@@ -234,11 +225,11 @@
                     <version>${maven-enforcer-plugin-version}</version>
                     <executions>
                         <execution>
-                            <id>enforce-checksum</id>
+                            <id>enforcerProtectionRules</id>
                             <goals>
                                 <goal>enforce</goal>
                             </goals>
-                            <phase>verify</phase>
+                            <phase>compile</phase>
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
@@ -256,6 +247,30 @@
                                         <checksum>${plugin-update-file-checksum}</checksum>
                                         <type>md5</type>
                                     </requireFileChecksum>
+                                    <dependencyConvergence/>
+                                    <banDuplicatePomDependencyVersions/>
+                                    <requireUpperBoundDeps/>
+                                    <bannedDependencies>
+                                        <excludes>
+                                            <exclude>*:commons-logging</exclude>
+                                            <exclude>ch.qos.logback*:*</exclude>
+                                            <exclude>org.slf4j*:*</exclude>
+                                            <exclude>log4j:*</exclude>
+                                            <exclude>org.apache.logging*:*</exclude>
+                                        </excludes>
+                                        <includes>
+                                            <include>org.apache.logging.log4j:log4j-api</include>
+                                            <include>org.apache.logging.log4j:log4j-to-slf4j</include>
+                                            <include>org.slf4j:slf4j-api:*</include>
+                                            <include>org.slf4j:slf4j-log4j12:*</include>
+                                            <include>org.slf4j:jul-to-slf4j:*</include>
+                                            <include>org.slf4j:jcl-over-slf4j:*</include>
+                                            <include>org.slf4j:log4j-over-slf4j:*</include>
+                                        </includes>
+                                    </bannedDependencies>
+                                    <requireJavaVersion>
+                                        <version>11</version>
+                                    </requireJavaVersion>
                                 </rules>
                                 <fail>true</fail>
                             </configuration>
