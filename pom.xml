@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.71</version>
+    <version>0.9.72</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -96,7 +96,7 @@
         <spotbugs-maven-plugin-spotbugs-dependency-version>4.2.0</spotbugs-maven-plugin-spotbugs-dependency-version>
         <maven-checkstyle-plugin-version>3.1.1</maven-checkstyle-plugin-version>
         <maven-checkstyle-puppycrawl-plugin-version>8.39</maven-checkstyle-puppycrawl-plugin-version>
-        <owasp-dependency-check-maven-version>6.0.4</owasp-dependency-check-maven-version>
+        <owasp-dependency-check-maven-version>6.0.5</owasp-dependency-check-maven-version>
         <sonar-maven-plugin-version>3.7.0.1746</sonar-maven-plugin-version>
         <jacobo-maven-plugin-version>0.8.6</jacobo-maven-plugin-version>
 
@@ -250,24 +250,6 @@
                                     <dependencyConvergence/>
                                     <banDuplicatePomDependencyVersions/>
                                     <requireUpperBoundDeps/>
-                                    <bannedDependencies>
-                                        <excludes>
-                                            <exclude>*:commons-logging</exclude>
-                                            <exclude>ch.qos.logback*:*</exclude>
-                                            <exclude>org.slf4j*:*</exclude>
-                                            <exclude>log4j:*</exclude>
-                                            <exclude>org.apache.logging*:*</exclude>
-                                        </excludes>
-                                        <includes>
-                                            <include>org.apache.logging.log4j:log4j-api</include>
-                                            <include>org.apache.logging.log4j:log4j-to-slf4j</include>
-                                            <include>org.slf4j:slf4j-api:*</include>
-                                            <include>org.slf4j:slf4j-log4j12:*</include>
-                                            <include>org.slf4j:jul-to-slf4j:*</include>
-                                            <include>org.slf4j:jcl-over-slf4j:*</include>
-                                            <include>org.slf4j:log4j-over-slf4j:*</include>
-                                        </includes>
-                                    </bannedDependencies>
                                     <requireJavaVersion>
                                         <version>11</version>
                                     </requireJavaVersion>
