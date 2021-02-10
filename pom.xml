@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.75</version>
+    <version>0.9.76</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -193,7 +193,7 @@
                     <executions>
                         <execution>
                             <id>WriteDependencyUpdatesIntoFile</id>
-                            <phase>process-resources</phase>
+                            <phase>validate</phase>
                             <goals>
                                 <goal>display-dependency-updates</goal>
                             </goals>
@@ -206,7 +206,7 @@
                         </execution>
                         <execution>
                             <id>WritePluginUpdatesIntoFile</id>
-                            <phase>process-resources</phase>
+                            <phase>validate</phase>
                             <goals>
                                 <goal>display-plugin-updates</goal>
                             </goals>
@@ -229,7 +229,7 @@
                             <goals>
                                 <goal>enforce</goal>
                             </goals>
-                            <phase>compile</phase>
+                            <phase>validate</phase>
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
@@ -268,7 +268,7 @@
                             <goals>
                                 <goal>validate</goal>
                             </goals>
-                            <phase>verify</phase>
+                            <phase>validate</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -329,7 +329,8 @@
                     </configuration>
                     <executions>
                         <execution>
-                            <phase>test</phase>
+                            <id>spotbugs</id>
+                            <phase>process-test-classes</phase>
                             <goals>
                                 <goal>check</goal>
                             </goals>
@@ -360,7 +361,7 @@
                             <goals>
                                 <goal>check</goal>
                             </goals>
-                            <phase>process-test-classes</phase>
+                            <phase>validate</phase>
                             <configuration>
                                 <configLocation>
                                     https://raw.githubusercontent.com/quantummaid/quantummaid-opensource-parent/master/checkstyle/checkstyle.xml
@@ -388,10 +389,11 @@
                     <version>${owasp-dependency-check-maven-version}</version>
                     <executions>
                         <execution>
+                            <id>failOnCveFinding</id>
                             <goals>
                                 <goal>check</goal>
                             </goals>
-                            <phase>verify</phase>
+                            <phase>validate</phase>
                             <configuration>
                                 <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                                 <suppressionFiles>
@@ -452,8 +454,31 @@
     </build>
 
     <profiles>
+
         <profile>
-            <id>prepareForMavenCentral</id>
+            <id>deployToMavenCentral</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>deployToMavenCentral</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>Tests</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
                 <property>
@@ -464,129 +489,14 @@
                 <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
                 <maven.source.skip>false</maven.source.skip>
                 <maven.javadoc.skip>false</maven.javadoc.skip>
-                <testMode>RELEASE</testMode>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>versions-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>tidy-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>de.quantummaid</groupId>
-                        <artifactId>documaid</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.owasp</groupId>
-                        <artifactId>dependency-check-maven</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>deployToMavenCentral</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>deployToMavenCentral</name>
-                </property>
-            </activation>
-            <properties>
-                <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
-                <maven.source.skip>false</maven.source.skip>
-                <maven.javadoc.skip>false</maven.javadoc.skip>
-                <testMode>RELEASE</testMode>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>versions-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>tidy-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>de.quantummaid</groupId>
-                        <artifactId>documaid</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.owasp</groupId>
-                        <artifactId>dependency-check-maven</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>Tests</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>skipTests</name>
-                    <value>!true</value>
-                </property>
-            </activation>
-            <properties>
-                <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
-                <maven.source.skip>false</maven.source.skip>
-                <maven.javadoc.skip>false</maven.javadoc.skip>
                 <testMode>NORMAL</testMode>
             </properties>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -613,6 +523,7 @@
                 </pluginManagement>
             </build>
         </profile>
+
         <profile>
             <id>StaticCodeAnalysisTests</id>
             <activation>
@@ -625,24 +536,13 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
                         <groupId>org.sonarsource.scanner.maven</groupId>
                         <artifactId>sonar-maven-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>sonar</id>
             <activation>
@@ -653,6 +553,94 @@
             <properties>
                 <sonar.skip>false</sonar.skip>
             </properties>
+        </profile>
+
+        <profile>
+            <id>pipelinePrecompileGeneral</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>prepareForMavenCentral</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tidy-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>de.quantummaid</groupId>
+                        <artifactId>documaid</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>pipelinePrecompileSpotbugs</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>prepareForMavenCentral</name>
+                </property>
+            </activation>
+            <properties>
+                <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>pipelinePrecompileVersions</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>prepareForMavenCentral</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>pipelinePrecompileOwasp</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>prepareForMavenCentral</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
