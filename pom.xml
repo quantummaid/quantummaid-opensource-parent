@@ -100,7 +100,7 @@
         <sonar-maven-plugin-version>3.8.0.2131</sonar-maven-plugin-version>
         <jacobo-maven-plugin-version>0.8.6</jacobo-maven-plugin-version>
 
-        <dependency-update-file-checksum>25406c206c1aa1b1bf5c2a46ccadcfe6</dependency-update-file-checksum>
+        <dependency-update-file-checksum>f639625fa07ce72c63d4a773c8532ee3</dependency-update-file-checksum>
         <plugin-update-file-checksum>915baffd77985e9da0d3cfee67e149eb</plugin-update-file-checksum>
 
         <sonar.organization>quantummaid</sonar.organization>
