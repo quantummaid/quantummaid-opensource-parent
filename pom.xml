@@ -300,7 +300,7 @@
                     <version>${nexus-staging-maven-plugin-version}</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <nexusUrl>https://s01.oss.sonatype.org.</nexusUrl>
+                        <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
                         <serverId>nexus</serverId>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         <autoDropAfterRelease>true</autoDropAfterRelease>
