@@ -24,7 +24,7 @@
 
     <groupId>de.quantummaid</groupId>
     <artifactId>quantummaid-opensource-parent</artifactId>
-    <version>0.9.77</version>
+    <version>0.9.78</version>
     <packaging>pom</packaging>
 
     <name>QuantumMaid OpenSource java standards</name>
@@ -72,8 +72,6 @@
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.source.skip>true</maven.source.skip>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
         <sonar.skip>true</sonar.skip>
 
         <maven-enforcer-plugin-version>3.0.0-M3</maven-enforcer-plugin-version>
@@ -481,8 +479,6 @@
             </activation>
             <properties>
                 <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
-                <maven.source.skip>false</maven.source.skip>
-                <maven.javadoc.skip>false</maven.javadoc.skip>
                 <testMode>NORMAL</testMode>
             </properties>
             <build>
